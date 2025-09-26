@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
   Box, 
@@ -10,12 +10,10 @@ import {
   ListItemText, 
   ListItemIcon,
   Button, 
-  Divider,
   Paper,
   Grid,
   Chip,
   IconButton,
-  Tooltip,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -23,12 +21,10 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions,
   LinearProgress
 } from "@mui/material";
 import { 
   ArrowBack as BackIcon,
-  Book as BookIcon,
   Description as FileIcon,
   PictureAsPdf as PdfIcon,
   VideoLibrary as VideoIcon,
@@ -99,9 +95,6 @@ const theme = createTheme({
     }
   },
 });
-
-// Available standards
-const standards = ["Std 5", "Std 6", "Std 7", "Std 8", "Std 9", "Std 10", "Std 11", "Std 12"];
 
 // Subjects for standards 5-10
 const baseSubjects = ["English", "Mathematics", "Science", "History", "Geography", "Computer Science"];
