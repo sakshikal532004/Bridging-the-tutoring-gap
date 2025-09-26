@@ -27,11 +27,6 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Divider,
   Radio,
   RadioGroup,
   FormControlLabel,
@@ -930,27 +925,6 @@ function ManageMaterials() {
             onChange={(e) => setCurrentMaterial({...currentMaterial, description: e.target.value})}
             sx={{ mb: 2 }}
           />
-          <FormControl fullWidth margin="dense" sx={{ mb: 2 }}>
-            <InputLabel>Standard</InputLabel>
-            <Select
-              value={currentMaterial.standard}
-              onChange={(e) => {
-                const newStandard = e.target.value;
-                // Reset stream and subject when standard changes
-                setCurrentMaterial({
-                  ...currentMaterial, 
-                  standard: newStandard,
-                  stream: "",
-                  subject: ""
-                });
-              }}
-              label="Standard"
-            >
-              {standards.map(standard => (
-                <MenuItem key={standard} value={standard}>{standard}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
           
           {/* Show stream selection only for standards 11-12 */}
           {(currentMaterial.standard === "Std 11" || currentMaterial.standard === "Std 12") && (
@@ -982,7 +956,10 @@ function ManageMaterials() {
               value={currentMaterial.subject}
               onChange={(e) => setCurrentMaterial({...currentMaterial, subject: e.target.value})}
               label="Subject"
-              disabled={!currentMaterial.standard || (currentMaterial.standard === "Std 11" || currentMaterial.standard === "Std 12") && !currentMaterial.stream}
+              disabled={
+                !currentMaterial.standard || 
+                ((currentMaterial.standard === "Std 11" || currentMaterial.standard === "Std 12") && !currentMaterial.stream)
+              }
             >
               {getSubjectsForStandard(currentMaterial.standard, currentMaterial.stream).map(subject => (
                 <MenuItem key={subject} value={subject}>{subject}</MenuItem>
