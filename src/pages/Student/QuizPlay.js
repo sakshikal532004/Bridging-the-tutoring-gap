@@ -186,7 +186,6 @@ function QuizPlay() {
   const [quizStarted, setQuizStarted] = useState(false);
   const [error, setError] = useState(null);
   const [showQuizSelection, setShowQuizSelection] = useState(true); // New state to control quiz selection view
-  const [debugInfo, setDebugInfo] = useState({}); // Debug information
 
   // Get quiz parameters from location state
   const { subject, standard, level, stream, quizId } = location.state || {};
@@ -204,12 +203,6 @@ function QuizPlay() {
       
       // Get all quizzes from all sources
       const allQuizzes = getAllQuizzes();
-      
-      // Save debug info
-      setDebugInfo({
-        totalQuizzes: allQuizzes.length,
-        searchParams: { subject, standard, level, stream, quizId }
-      });
       
       // Log detailed quiz information for debugging
       logQuizDetails(allQuizzes, { subject, standard, level, stream });
